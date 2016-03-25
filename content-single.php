@@ -20,7 +20,13 @@ $post_table = $json_dec['table_post'];
 // flip the key/value of the array
 $flip = array_flip( $post_table );
 	?>
-<?php tablepress_print_table( array( 'id' => $flip[$post_obj->ID], 'use_datatables' => true, 'print_name' => false, 'datatables_buttons' => 'colvis,copy,csv,excel,pdf,print') ); ?>
+<?php 
+	if ( function_exists('tablepress_print_table') ){
+		tablepress_print_table( array( 'id' => $flip[$post_obj->ID], 'use_datatables' => true, 'print_name' => false, 'datatables_buttons' => 'colvis,copy,csv,excel,pdf,print') ); 
+	}else{
+		echo "Install tablepress";
+	}
+?>
                         <table id="data_meta_table"> 
                         <tr><td><strong>Source:</strong></td><td><?php echo get_field('source'); ?></td></tr>
                          <tr><td><strong>Credit:</strong></td><td><?php echo get_field('credit'); ?></td></tr>
