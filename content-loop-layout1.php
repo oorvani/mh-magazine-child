@@ -12,7 +12,11 @@
 	<div class="mh-loop-content clearfix">
 		<header class="mh-loop-header">
 			<h3 class="entry-title mh-loop-title">
-				<a href="<?php the_permalink(); ?>" rel="bookmark">
+				<?php if(get_post_type( get_the_ID()) == 'link'  ){  ?>
+					<a href="<?php get_field('source_url'); ?>" rel="bookmark">
+				<?php }else{ ?>
+					<a href="<?php the_permalink(); ?>" rel="bookmark">
+				<?php } ?>
 					<?php the_title(); ?>
 				</a>
 			</h3>
