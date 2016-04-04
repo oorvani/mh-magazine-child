@@ -26,19 +26,24 @@
 
             <?php if (current_theme_supports('post-thumbnails') && $instance['show_thumbnail'] && has_post_thumbnail()) : ?>
               <div class="entry-image">
-                <a href="<?php the_permalink(); ?>" rel="bookmark">
-
-                  <?php the_post_thumbnail($instance['thumb_size']); ?>
+                <?php if(get_post_type( get_the_ID()) == 'link'  ){  ?>
+                  <a href="<?php get_field('source_url'); ?>" rel="bookmark">
+                <?php }else{ ?>
+                  <a href="<?php the_permalink(); ?>" rel="bookmark">
+                <?php } ?>
+                      <?php the_post_thumbnail($instance['thumb_size']); ?>
                 </a>
               </div>
             <?php endif; ?>
 
             <?php if (get_the_title() && $instance['show_title']) : ?>
               <h4 class="entry-title">
-                
-                <a href="<?php the_permalink(); ?>" rel="bookmark">
-
-                  <?php the_title(); ?>
+                <?php if(get_post_type( get_the_ID()) == 'link'  ){  ?>
+                  <a href="<?php get_field('source_url'); ?>" rel="bookmark">
+                <?php }else{ ?>
+                  <a href="<?php the_permalink(); ?>" rel="bookmark">
+                <?php } ?>
+                        <?php the_title(); ?>
                 </a>
               </h4>
             <?php endif; ?>
