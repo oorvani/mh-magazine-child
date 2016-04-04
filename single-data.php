@@ -8,7 +8,7 @@
 				if (is_attachment()) {
 					get_template_part('content', 'attachment');
 				} else {
-					get_template_part('content', 'single');
+					get_template_part('content', 'data');
 				}
 				mh_after_post_content();
 				comments_template();
