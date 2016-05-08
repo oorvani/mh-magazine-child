@@ -27,7 +27,7 @@
             <?php if (current_theme_supports('post-thumbnails') && $instance['show_thumbnail'] && has_post_thumbnail()) : ?>
               <div class="entry-image">
                 <?php if(get_post_type( get_the_ID()) == 'link'  ){  ?>
-                  <a href="<?php get_field('source_url'); ?>" rel="bookmark">
+                  <a href="<?php echo get_field('source_url', get_the_ID()); ?>" rel="bookmark">
                 <?php }else{ ?>
                   <a href="<?php the_permalink(); ?>" rel="bookmark">
                 <?php } ?>
@@ -39,7 +39,7 @@
             <?php if (get_the_title() && $instance['show_title']) : ?>
               <h4 class="entry-title">
                 <?php if(get_post_type( get_the_ID()) == 'link'  ){  ?>
-                  <a href="<?php get_field('source_url'); ?>" rel="bookmark">
+                  <a href="<?php echo get_field('source_url', get_the_ID()); ?>" rel="bookmark">
                 <?php }else{ ?>
                   <a href="<?php the_permalink(); ?>" rel="bookmark">
                 <?php } ?>
